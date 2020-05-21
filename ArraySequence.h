@@ -28,12 +28,10 @@ public:
 
     T get_first() const override {
         throw my_exception();
-        // выбрасывает исключение
     }
 
     T get_last() const override {
         throw my_exception();
-        // выбрасывает исключение
     }
 
     T get(const int index) const override {
@@ -56,27 +54,22 @@ public:
 public:
     void append(T item) override {
         throw my_exception();
-        // выбрасывает исключение
     }
 
     void prepend(T item) override {
         throw my_exception();
-        // выбрасывает исключение
     }
 
     void insert_at(const int index, T value) override {
         throw my_exception();
-        // выбрасывает исключение
     }
 
     void remove_at(const int index) override {
         throw my_exception();
-        // выбрасывает исключение
     }
 
     void concat(sequence<T>* other) override {
         throw my_exception();
-        // искл
     }
 
 };
