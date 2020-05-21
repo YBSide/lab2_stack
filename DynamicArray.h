@@ -15,13 +15,12 @@ public:
         this->items_check = new bool[size];
         this->size = size;
 
-        for (int i; i < size; ++i)
+        for (int i = 0; i < size; ++i)
         {
             this->items_check[i] = true;
             this->items[i] = items[i];
         }
     }
-
     dynamic_array(const int size)
     {
         if ( size < 0 )
@@ -34,7 +33,7 @@ public:
     }
     dynamic_array(const dynamic_array<T> &array)
     {
-        DynamicArray(array.data, array.items_check, array.size);
+        DynamicArray(array.data, array.items_check, array.size); //???
     }
 public:
     int get_size() const { return this->size; }

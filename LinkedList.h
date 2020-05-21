@@ -24,15 +24,21 @@ public:
         this->head->data = items[0];
         this->head->next = NULL;
         this->tail = this->head;
-        for (i+1; i<size; ++i) {
+        int j = i+1;
+        for (j; j<size; j++) {
+            auto *tmp = new list_element;
+            tmp->data = items[j];
+            tmp->next = NULL;
+            this->tail->next = tmp;
             this->tail = this->tail->next;
-            this->tail = new list_element;
-            this->tail->data = items[i];
-            this->tail->next = NULL;
+            //this->tail = this->tail->next;
+            //this->tail = new list_element;
+            //this->tail->data = items[i];
+            //this->tail->next = NULL;
         }
     }
     linked_list() {
-        this->size = 1;
+        this->size = 0;
         this->head = NULL;
         this->tail = this->head;
     }
@@ -80,17 +86,19 @@ public:
             j++;
         }
 
-        linked_list<T> new_list = this->linked_list(elements, new_size);
+        auto new_list = new linked_list(elements, new_size);
         return new_list;
     }
+
     int get_length() {
         return this->size;
     }
 
-
-
 public:
     void prepend(T item) {
+        //if (this->head == NULL)
+            //size -= 1;
+
         this->size += 1;
 
         auto *tmp = new list_element;
@@ -107,6 +115,9 @@ public:
         }
     }
     void append(T item) {
+        //if (this->head == NULL)
+            //size -= 1;
+
         this->size += 1;
 
         auto *tmp = new list_element;
@@ -117,7 +128,6 @@ public:
     void insert_at(T item, int index) {
         if (index<0 || index >= this->size)
             throw out_of_range("index out of range");
-        // исключение!!
 
         list_element *tmp = this->head;
         list_element *pre_tmp = this->head;
@@ -141,9 +151,47 @@ public:
         }
         this->size += 1;
     }
+
     void concat(linked_list<T> *list) {
         this->tail->next = list->head;
         this->tail = list->tail;
         this->size += list->size;
+    }
+
+    void remove_at(int index) {
+        if (index<0 || index >= this->size)
+            throw out_of_range("index out of range");
+
+        list_element *tmp = this->head;
+        list_element *pre_tmp = this->head;
+        int i = 0;
+
+        if (this->size == 0 && this->head == NULL)
+            return;
+
+        if (this->size == 1 && this->head != NULL) {
+            delete this->head;
+            this->head = NULL;
+            this->size -= 1;
+            return;
+        }
+
+        if (index == 0) {
+            tmp = this->head->next;
+            delete this->head;
+            this->head = tmp;
+            this->size -= 1;
+            return;
+        }
+
+        while(i != index) {
+            i++;
+            pre_tmp = tmp;
+            tmp = tmp->next;
+        }
+
+        pre_tmp->next = tmp->next;
+        delete tmp;
+        size -= 1;
     }
 };
