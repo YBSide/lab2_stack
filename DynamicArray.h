@@ -1,4 +1,5 @@
 #pragma once
+#include <stdexcept>
 
 using namespace std;
 
@@ -21,7 +22,7 @@ public:
             this->items[i] = items[i];
         }
     }
-    dynamic_array(const int size)
+    explicit dynamic_array(const int size)
     {
         if ( size < 0 )
             throw length_error("Wrong size");
@@ -36,7 +37,7 @@ public:
         DynamicArray(array.data, array.items_check, array.size); //???
     }
 public:
-    int get_size() const { return this->size; }
+    [[nodiscard]] int get_size() const { return this->size; }
     T get(const int index) const
     {
         if (index < 0 || index >= this->size || !this->items_check[index])

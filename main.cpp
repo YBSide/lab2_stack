@@ -3,15 +3,14 @@
 #include "LinkedList.h"
 #include "ListSequence.h"
 #include "Interface.h"
-
+#include "Tests.h"
 using namespace std;
 
 int main() {
     cout << "Do you want to run tests? (YES(y) or NO(n))" << endl;
     string answer = interface_function_1();
     if (answer == "1")
-        //запуск тестов
-        int a;
+        tests();
 
     cout << "Do you want to use this program by yourself? (YES(y) or NO(n))" << endl;
     answer = interface_function_1();

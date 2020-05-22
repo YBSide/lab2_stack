@@ -31,7 +31,7 @@ public:
     stack<T>* concat(stack<T>* other) {
         auto *combined_list = new linked_list<T>();
 
-        for(int i = 0; i < other->get_length(); i++)
+        for(int i = 0; i < other->get_size(); i++)
             combined_list->append(other->get(i));
         for(int j = 0; j < this->items->get_length(); j++)
             combined_list->append(this->get(j));
