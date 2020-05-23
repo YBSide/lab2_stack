@@ -34,7 +34,7 @@ public:
     }
     dynamic_array(const dynamic_array<T> &array)
     {
-        DynamicArray(array.data, array.items_check, array.size); //???
+        dynamic_array(array.data, array.size);
     }
 public:
     [[nodiscard]] int get_size() const { return this->size; }
