@@ -65,11 +65,11 @@ public:
 
         auto new_list = new linked_list<T>();
         if (this->items->get_length() == 1) {
-            new_list->append(func(this->items->get(0)));
+            new_list->append(function(this->items->get(0)));
         }
         else {
             for (int i = 0; i < this->items->get_length(); i++) {
-                new_list->prepend(func(this->itmes->get(i)));
+                new_list->prepend(function(this->items->get(i)));
             }
         }
         auto new_sequence = new list_sequence(new_list);
@@ -84,7 +84,7 @@ public:
         auto new_list = new linked_list<T>();
         int j = 0;
         for (int i = 0; i < this->items->get_length(); ++i) {
-            if (func(this->items->get(i))) {
+            if (function(this->items->get(i))) {
                 new_list->prepend(this->items->get(i));
                 j++;
             }
@@ -98,7 +98,7 @@ public:
         if (this->items->get_length() <= 0)
             throw my_exception_();
 
-        T future_output = func(this->items->get(0), constant);
+        T future_output = function(this->items->get(0), constant);
         for (int i = 1; i < this->items->get_length(); ++i) {
             future_output = function(this->items->get(i), future_output);
         }

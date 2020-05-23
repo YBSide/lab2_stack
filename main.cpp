@@ -18,7 +18,6 @@ int main() {
         cout << "Goodbye! Have a nice day/night!" << endl;
         return 0;
     }
-    // выбор типа
 
     auto your_list = new linked_list<struct human>();
 

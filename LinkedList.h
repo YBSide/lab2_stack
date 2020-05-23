@@ -31,10 +31,6 @@ public:
             tmp->next = NULL;
             this->tail->next = tmp;
             this->tail = this->tail->next;
-            //this->tail = this->tail->next;
-            //this->tail = new list_element;
-            //this->tail->data = items[i];
-            //this->tail->next = NULL;
         }
     }
     linked_list() {
@@ -96,8 +92,6 @@ public:
 
 public:
     void prepend(T item) {
-        //if (this->head == NULL)
-            //size -= 1;
 
         this->size += 1;
 
@@ -115,9 +109,6 @@ public:
         }
     }
     void append(T item) {
-        //if (this->head == NULL)
-            //size -= 1;
-
         this->size += 1;
 
         auto *tmp = new list_element;
