@@ -22,8 +22,9 @@ int main() {
     auto your_list = new linked_list<struct human>();
 
     int num_of_elements;
-    cout << "Write number of elements" << endl;
-    cin >> num_of_elements;
+
+    num_of_elements = interface_function_5();
+
     for (int i = 0; i < num_of_elements; i++) {
         cout << i+1 << ")";
         your_list->prepend(interface_function_3());

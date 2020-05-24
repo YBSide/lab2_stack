@@ -87,3 +87,22 @@ string interface_function_4() {
     return "00";
 }
 
+int interface_function_5() {
+    while (true) {
+        cout << "Write number of elements" << endl;
+        int num_of_el;
+        cin >> num_of_el;
+
+        if (cin.fail()) {
+            cin.clear();
+            cin.ignore(32767,'\n');
+            cout << "Please, use number, The answer will be rounded down or to zero" << endl;
+        }
+        else {
+            cin.ignore(32767,'\n');
+            return num_of_el;
+        }
+    }
+}
+
+
