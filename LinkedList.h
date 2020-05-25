@@ -7,7 +7,7 @@ using namespace std;
 
 template <typename T>
 class linked_list {
-private:
+public:
     struct list_element {
         T data;
         list_element* next;
@@ -22,26 +22,26 @@ public:
 
         this->head = new list_element;
         this->head->data = items[0];
-        this->head->next = NULL;
+        this->head->next = nullptr;
         this->tail = this->head;
         int j = i+1;
         for (j; j<size; j++) {
-            auto *tmp = new list_element;
+            auto tmp = new list_element;
             tmp->data = items[j];
-            tmp->next = NULL;
+            tmp->next = nullptr;
             this->tail->next = tmp;
             this->tail = this->tail->next;
         }
     }
     linked_list() {
         this->size = 0;
-        this->head = NULL;
+        this->head = nullptr;
         this->tail = this->head;
     }
     linked_list(const linked_list<T> &list) {
         list_element *tmp = list.head;
         this->size = list.size;
-        while (tmp != NULL) {
+        while (tmp != nullptr) {
             prepend(tmp->data);
             tmp = tmp->next;
         }
@@ -49,12 +49,12 @@ public:
 
 public:
     T get_first() {
-        if (this->head == NULL)
+        if (this->head == nullptr)
             throw out_of_range("First element is NULL");
         return this->head->data;
     }
     T get_last() {
-        if (this->tail == NULL)
+        if (this->tail == nullptr)
             throw out_of_range("list's size = 1 and last element is NULL");
         return this->tail->data;
     }
@@ -97,9 +97,9 @@ public:
 
         auto *tmp = new list_element;
         tmp->data = item;
-        tmp->next = NULL;
+        tmp->next = nullptr;
 
-        if (this->head == NULL) {
+        if (this->head == nullptr) {
             this->head = tmp;
             this->tail = tmp;
         }
@@ -157,12 +157,12 @@ public:
         list_element *pre_tmp = this->head;
         int i = 0;
 
-        if (this->size == 0 && this->head == NULL)
+        if (this->size == 0 && this->head == nullptr)
             return;
 
-        if (this->size == 1 && this->head != NULL) {
+        if (this->size == 1 && this->head != nullptr) {
             delete this->head;
-            this->head = NULL;
+            this->head = nullptr;
             this->size -= 1;
             return;
         }
@@ -184,5 +184,15 @@ public:
         pre_tmp->next = tmp->next;
         delete tmp;
         size -= 1;
+    }
+
+    ~linked_list() {
+        auto tmp = this->head;
+        auto next = this->head;
+        while (tmp != nullptr) {
+            next = tmp->next;
+            delete tmp;
+            tmp = next;
+        }
     }
 };

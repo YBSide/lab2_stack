@@ -14,7 +14,7 @@ struct my_exception_ : public exception {
 
 template <typename T>
 class stack {
-private:
+public:
     list_sequence<T>* items;
 public:
     explicit stack(list_sequence<T>* items)
@@ -35,8 +35,8 @@ public:
             combined_list->append(other->get(i));
         for(int j = 0; j < this->items->get_length(); j++)
             combined_list->append(this->get(j));
-        auto *combined_sequence = new list_sequence(combined_list);
-        auto *combined_stack = new stack(combined_sequence);
+        auto combined_sequence = new list_sequence<T>(combined_list);
+        auto combined_stack = new stack<T>(combined_sequence);
         return combined_stack;
     }
 
@@ -72,8 +72,8 @@ public:
                 new_list->prepend(function(this->items->get(i)));
             }
         }
-        auto new_sequence = new list_sequence(new_list);
-        auto new_stack = new stack(new_sequence);
+        auto new_sequence = new list_sequence<T>(new_list);
+        auto new_stack = new stack<T>(new_sequence);
         return new_stack;
     }
 
@@ -89,8 +89,8 @@ public:
                 j++;
             }
         }
-        auto new_sequence = new list_sequence(new_list);
-        auto new_stack = new stack(new_sequence);
+        auto new_sequence = new list_sequence<T>(new_list);
+        auto new_stack = new stack<T>(new_sequence);
         return new_stack;
     }
 
@@ -108,5 +108,8 @@ public:
     void push(T item)
     {
         this->items->append(item);
+    }
+
+    ~stack() {
     }
 };

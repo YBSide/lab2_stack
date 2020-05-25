@@ -6,7 +6,7 @@ using namespace std;
 
 template <typename T>
 class list_sequence: public sequence<T> {
-private:
+public:
     linked_list<T>* items;
 public:
     list_sequence(T* items, int size) {
@@ -65,4 +65,7 @@ public:
         return combined_sequence;
     }
 
+    ~list_sequence() {
+        this->items;
+    }
 };
